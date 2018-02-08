@@ -13,11 +13,11 @@
 @implementation NSObject (QQHook)
 
 + (void)hookQQ {
-    tk_hookMethod(objc_getClass("TChatWalletTransferViewController"), @selector(_updateUI), [self class], @selector(hook_updateUI));
+    k_hookMethod(objc_getClass("TChatWalletTransferViewController"), @selector(_updateUI), [self class], @selector(hook_updateUI));
     
-    tk_hookMethod(objc_getClass("MQAIOChatViewController"), @selector(handleAppendNewMsg:), [self class], @selector(hook_handleAppendNewMsg:));
+    k_hookMethod(objc_getClass("MQAIOChatViewController"), @selector(handleAppendNewMsg:), [self class], @selector(hook_handleAppendNewMsg:));
     
-    tk_hookMethod(objc_getClass("MQAIOTopBarViewController"), @selector(awakeFromNib), [self class], @selector(hook_awakeFromNib));
+    k_hookMethod(objc_getClass("MQAIOTopBarViewController"), @selector(awakeFromNib), [self class], @selector(hook_awakeFromNib));
 }
 
 - (void)hook_updateUI {

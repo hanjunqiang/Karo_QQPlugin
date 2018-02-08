@@ -44,5 +44,8 @@ QQ红包助手 v1.0.0
 
 若有其他好的想法欢迎 Issue me
 
+------
 
+### 相关
 
+[AsTryE](https://github.com/AsTryE)这里已经列出了要hook的方法。
