@@ -45,11 +45,11 @@
     NSMenuItem *preventRevokeItem = [[NSMenuItem alloc] initWithTitle:@"开启消息防撤回" action:@selector(onPreventRevoke:) keyEquivalent:@"L"];
     preventRevokeItem.state = [[QQPluginConfig sharedConfig] preventRevokeEnable];
     //        自动回复
-    NSMenuItem *autoReplyItem = [[NSMenuItem alloc] initWithTitle:@"自动抢红包设置" action:@selector(onRedPack:) keyEquivalent:@"K"];
-    autoReplyItem.state = [[QQPluginConfig sharedConfig] redPackEnable];
+    NSMenuItem *redPackItem = [[NSMenuItem alloc] initWithTitle:@"自动抢红包设置" action:@selector(onRedPack:) keyEquivalent:@"K"];
+    redPackItem.state = [[QQPluginConfig sharedConfig] redPackEnable];
     NSMenu *subMenu = [[NSMenu alloc] initWithTitle:@"QQ小助手"];
     [subMenu addItem:preventRevokeItem];
-    [subMenu addItem:autoReplyItem];
+    [subMenu addItem:redPackItem];
     
     NSMenuItem *menuItem = [[NSMenuItem alloc] init];
     [menuItem setTitle:@"QQ小助手"];
