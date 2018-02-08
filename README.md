@@ -29,7 +29,7 @@ QQ红包助手 v1.0.0
 * 点击`clone or download`按钮下载 QQPlugin 至`下载`目录并解压，打开Termimal，执行 `./Other/Install.sh`即可。
 
 
-**3. 安装完成**
+**2. 安装完成**
 
 * 登录微信，看到**红包助手**即安装成功。
 
