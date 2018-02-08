@@ -15,6 +15,10 @@
 		8874EF25202BED5000D68CE2 /* NSObject+QQHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 8874EF23202BED5000D68CE2 /* NSObject+QQHook.m */; };
 		8874EF28202BEDEB00D68CE2 /* Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 8874EF26202BEDEB00D68CE2 /* Helper.h */; };
 		8874EF29202BEDEB00D68CE2 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8874EF27202BEDEB00D68CE2 /* Helper.m */; };
+		8874EF2D202C223500D68CE2 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 8874EF2B202C222D00D68CE2 /* fishhook.c */; };
+		8874EF2E202C223700D68CE2 /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 8874EF2C202C222D00D68CE2 /* fishhook.h */; };
+		8874EF32202C23EC00D68CE2 /* QQPluginConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 8874EF30202C23EC00D68CE2 /* QQPluginConfig.h */; };
+		8874EF33202C23EC00D68CE2 /* QQPluginConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 8874EF31202C23EC00D68CE2 /* QQPluginConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,10 @@
 		8874EF23202BED5000D68CE2 /* NSObject+QQHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+QQHook.m"; sourceTree = "<group>"; };
 		8874EF26202BEDEB00D68CE2 /* Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
 		8874EF27202BEDEB00D68CE2 /* Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		8874EF2B202C222D00D68CE2 /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
+		8874EF2C202C222D00D68CE2 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		8874EF30202C23EC00D68CE2 /* QQPluginConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQPluginConfig.h; sourceTree = "<group>"; };
+		8874EF31202C23EC00D68CE2 /* QQPluginConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQPluginConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,9 +89,11 @@
 		8874EF07202BEC3200D68CE2 /* QQPlugin */ = {
 			isa = PBXGroup;
 			children = (
-				8874EF08202BEC3200D68CE2 /* QQPlugin.h */,
 				8874EF09202BEC3200D68CE2 /* Info.plist */,
+				8874EF2F202C23D400D68CE2 /* Config */,
+				8874EF2A202C222D00D68CE2 /* Vendor */,
 				8874EF1F202BEC7100D68CE2 /* Supporting Files */,
+				8874EF08202BEC3200D68CE2 /* QQPlugin.h */,
 				8874EF26202BEDEB00D68CE2 /* Helper.h */,
 				8874EF27202BEDEB00D68CE2 /* Helper.m */,
 				8874EF22202BED5000D68CE2 /* NSObject+QQHook.h */,
@@ -109,6 +119,24 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8874EF2A202C222D00D68CE2 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				8874EF2B202C222D00D68CE2 /* fishhook.c */,
+				8874EF2C202C222D00D68CE2 /* fishhook.h */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		8874EF2F202C23D400D68CE2 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				8874EF30202C23EC00D68CE2 /* QQPluginConfig.h */,
+				8874EF31202C23EC00D68CE2 /* QQPluginConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -118,7 +146,9 @@
 			files = (
 				8874EF28202BEDEB00D68CE2 /* Helper.h in Headers */,
 				8874EF16202BEC3200D68CE2 /* QQPlugin.h in Headers */,
+				8874EF32202C23EC00D68CE2 /* QQPluginConfig.h in Headers */,
 				8874EF24202BED5000D68CE2 /* NSObject+QQHook.h in Headers */,
+				8874EF2E202C223700D68CE2 /* fishhook.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +252,8 @@
 			files = (
 				8874EF25202BED5000D68CE2 /* NSObject+QQHook.m in Sources */,
 				8874EF29202BEDEB00D68CE2 /* Helper.m in Sources */,
+				8874EF33202C23EC00D68CE2 /* QQPluginConfig.m in Sources */,
+				8874EF2D202C223500D68CE2 /* fishhook.c in Sources */,
 				8874EF21202BECCA00D68CE2 /* mian.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

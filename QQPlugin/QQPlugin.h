@@ -14,7 +14,19 @@ FOUNDATION_EXPORT double QQPluginVersionNumber;
 //! Project version string for QQPlugin.
 FOUNDATION_EXPORT const unsigned char QQPluginVersionString[];
 
+typedef void (*CDUnknownFunctionPointerType)(void);
 
+struct RecallModel {
+    CDUnknownFunctionPointerType *_field1;
+    int _field2;
+    _Bool _field3;
+    _Bool _field5;
+    unsigned long long _field6;
+    union {
+        unsigned long long _field1;
+        unsigned long long _field2;
+    } _field7;
+};
 
 @interface TChatWalletTransferViewController : NSViewController
 
@@ -29,18 +41,20 @@ FOUNDATION_EXPORT const unsigned char QQPluginVersionString[];
 
 - (void)didClickNewMsgRemindPerformButton;
 
-@end
-
-
-@interface MQAIOTopBarViewController : NSViewController
-
-- (void)awakeFromNib;
+- (void)revokeMessages:(id)msg;
 
 @end
+
 
 @interface WalletContentView : NSObject
 
 - (void)performClick;
+
+@end
+
+@interface QQMessageRevokeEngine: NSObject
+
+- (void)handleRecallNotify:(struct RecallModel*)notify isOnline:(BOOL)isOnline;
 
 @end
 
