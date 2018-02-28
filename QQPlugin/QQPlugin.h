@@ -58,3 +58,15 @@ struct RecallModel {
 
 @end
 
+@interface BHMsgListManager: NSObject
+
+- (void)getMessageKey:(id)msg;
+
+@end
+
+@interface RedPackHelper: NSObject
+
+- (void)openRedPackWithMsgModel:(id)arg0 operation:(id)arg1;
+
+@end 
+

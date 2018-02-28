@@ -20,6 +20,7 @@
     k_hookMethod(objc_getClass("MQAIOChatViewController"), @selector(handleAppendNewMsg:), [self class], @selector(hook_handleAppendNewMsg:));
     k_hookMethod(objc_getClass("MQAIOChatViewController"), @selector(revokeMessages:), [self class], @selector(hook_revokeMessages:));
     k_hookMethod(objc_getClass("QQMessageRevokeEngine"), @selector(handleRecallNotify:isOnline:), [self class], @selector(hook_handleRecallNotify:isOnline:));
+//    k_hookMethod(objc_getClass("BHMsgListManager"), @selector(getMessageKey:), [self class], @selector(hook_getMessageKey:));
     //防撤回
     
     //      替换沙盒路径
@@ -33,7 +34,6 @@
 + (void)setup {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self addAssistantMenuItem];
-    
     });
 }
 
@@ -99,26 +99,44 @@
     //调用红包页面抢红包方法
     NSString *redPackOpenState = [redPackOpenStateText performSelector:@selector(stringValue)];
     if (![redPackOpenState isEqualToString:@"已拆开"]) {
-        NSLog(@"抢到红包 - 红包信息: %@",redPackDic);
+        NSLog(@"红包信息: %@",redPackDic);
         if([walletContentView respondsToSelector:@selector(performClick)]) {
             [walletContentView performSelector:@selector(performClick)];
         }
     } else {
-        NSLog(@"检测到历史红包 - 红包信息: %@",redPackDic);
+        NSLog(@"历史红包信息: %@",redPackDic);
     }
 }
 
 - (void)hook_handleAppendNewMsg:(id)msg {
     [self hook_handleAppendNewMsg:msg];
+    //判断是否开启了自动抢红包
     if([self respondsToSelector:@selector(didClickNewMsgRemindPerformButton)]) {
         [self performSelector:@selector(didClickNewMsgRemindPerformButton)];
     }
 }
+//不在前台时    //存在消息列表刷新的问题。
+//- (void)hook_getMessageKey:(id)msg {
+//    [self hook_getMessageKey:msg];
+//    //判断是否开启了自动抢红包
+//    if ([[QQPluginConfig sharedConfig] redPackEnable]) {
+//        id redPackHelper = NSClassFromString(@"RedPackHelper");
+//        if ([msg isKindOfClass:NSClassFromString(@"BHMessageModel")]) {
+//            NSUInteger msgType = [[msg valueForKey:@"_msgType"] integerValue];
+//            if (msgType == 311) {
+//                // 红包消息
+//                [redPackHelper performSelector:@selector(openRedPackWithMsgModel:operation:) withObject:msg withObject:@(0)];
+//                id content = [msg performSelector:@selector(content)];
+//                NSLog(@"抢到红包%@ -详细信息: %@",msg,content);
+//            }
+//        }
+//    }
+
+//}
 
 - (void)hook_revokeMessages:(id)msg {
     if([[QQPluginConfig sharedConfig] preventRevokeEnable]) {
-        
-    }else {
+    } else {
         [self hook_revokeMessages:msg];
     }
 }
@@ -127,7 +145,7 @@
     if([[QQPluginConfig sharedConfig] preventRevokeEnable]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSUserNotification *userNotification = [[NSUserNotification alloc] init];
-            userNotification.informativeText = @"成功拦截一条撤回消息";
+            userNotification.informativeText = @"已拦截一条撤回消息";
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:userNotification];
         });
     }else {
@@ -158,3 +176,4 @@ NSArray<NSString *> *swizzled_NSSearchPathForDirectoriesInDomains(NSSearchPathDi
 }
 
 @end
+
